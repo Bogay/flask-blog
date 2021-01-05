@@ -1,0 +1,31 @@
+<html>
+
+<head></head>
+
+<body>
+    <h1>{{title}}</h1>
+    <input id="post-body" value={{body}}>
+    <button onclick="editPost()">edit</button>
+    <button onclick="deletePost()">delete</button>
+    <script>
+        function editPost() {
+            fetch('', {
+                body: JSON.stringify({
+                    'body': document.getElementById('post-body').value
+                }),
+                headers: {
+                    'content-type': 'application/json'
+                },
+                method: 'PUT',
+            }).then(res => res.text()).then(text => alert(text))
+        }
+
+        function deletePost() {
+            fetch('', {
+                method: 'DELETE',
+            }).then(res => res.text()).then(text => alert(text))
+        }
+    </script>
+</body>
+
+</html>

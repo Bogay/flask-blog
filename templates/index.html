@@ -1,0 +1,27 @@
+<html>
+
+<head></head>
+
+<body>
+    title: <input id="post-title"> body: <input id="post-body">
+    <button onclick="newPost()">new post!</button>
+    <script>
+        const postFormIds = ['post-title', 'post-body']
+
+        function newPost() {
+            fetch('/posts', {
+                body: JSON.stringify({
+                    'title': document.getElementById('post-title').value,
+                    'body': document.getElementById('post-body').value
+                }),
+                headers: {
+                    'content-type': 'application/json'
+                },
+                method: 'POST',
+            }).then(res => res.text()).then(text => alert(text))
+        }
+    </script>
+
+</body>
+
+</html>
