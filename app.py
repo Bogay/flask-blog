@@ -6,7 +6,9 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html',
+                           len=model.post_len(),
+                           posts=model.get_posts())
 
 
 @app.route('/posts', methods=['POST'])

@@ -4,7 +4,12 @@
 
 <body>
     title: <input id="post-title"> body: <input id="post-body">
-    <button onclick="newPost()">new post!</button>
+    <button onclick="newPost()">new post!</button><br> 
+    <ol>
+    {%for i in range(0, len)%}
+        <li value="{{i}}"><a href='./posts/{{i}}'>{{posts[i].title}}</a></li>
+    {% endfor %}
+    </ol>
     <script>
         const postFormIds = ['post-title', 'post-body']
 
@@ -18,7 +23,7 @@
                     'content-type': 'application/json'
                 },
                 method: 'POST',
-            }).then(res => res.text()).then(text => alert(text))
+            }).then(res => res.text()).then(text => location.reload())
         }
     </script>
 
